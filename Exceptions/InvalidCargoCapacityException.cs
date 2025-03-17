@@ -1,6 +1,3 @@
-﻿namespace finalProject;
+﻿namespace Exceptions;
 
-public class InvalidCargoCapacityException
-{
-
-}
+public class InvalidCargoCapacityException(string? message) : VehicleException(message ?? "Invalid cargo capacity.") { }

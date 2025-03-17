@@ -1,4 +1,5 @@
-﻿namespace finalProject;
+﻿using Exceptions;
+namespace finalProject;
 
 public abstract class Vehicle
 {
@@ -6,10 +7,18 @@ public abstract class Vehicle
     public string Name { get { return name; } set { name = value; } }
 
     private double price;
-    public double Price { get { return price; } set { price = value; } }
+    public double Price
+    {
+        get { return price; }
+        set { if (value < 0) throw new InvalidPriceException("Price cannot be negative!"); price = value; }
+    }
 
     private double speed;
-    public double Speed { get { return speed; } set { speed = value; } }
+    public double Speed
+    {
+        get { return speed; }
+        set { if (value < 0) throw new InvalidSpeedException("Speed cannot be negative!"); speed = value; }
+    }
 
     private string vehicleType = string.Empty;
     public string VehicleType { get { return vehicleType; } set { vehicleType = value; } }

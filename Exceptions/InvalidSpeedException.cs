@@ -1,6 +1,3 @@
-﻿namespace finalProject;
+﻿namespace Exceptions;
 
-public class InvalidSpeedException
-{
-
-}
+public class InvalidSpeedException(string? message) : VehicleException(message ?? "Invalid speed.") { }
