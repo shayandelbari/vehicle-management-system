@@ -1,0 +1,69 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    name: Build and Package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runtime: [win-x64, linux-x64, osx-x64, osx-arm64]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish project
+        run: |
+          dotnet publish -c Release -r ${{ matrix.runtime }} --self-contained true -p:PublishSingleFile=true --output publish/${{ matrix.runtime }} --no-restore
+
+      - name: Create archive file
+        run: |
+          tar -czvf publish/vehicleManagementSystem-${{ matrix.runtime }}-${{ github.ref_name }}.tar.gz -C publish/${{ matrix.runtime }} .
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: vehicleManagementSystem-${{ matrix.runtime }}-${{ github.ref_name }}
+          path: publish/vehicleManagementSystem-${{ matrix.runtime }}-${{ github.ref_name }}.tar.gz
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: publish
+
+      - name: Verify artifacts
+        run: |
+          if [ -z "$(ls -A publish)" ]; then
+            echo "Error: No artifacts found in publish directory."
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          draft: true
+          prerelease: false
+          files: publish/**/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
