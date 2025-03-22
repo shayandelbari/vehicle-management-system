@@ -1,10 +1,20 @@
 ﻿using Constants;
+using Exceptions;
 
 namespace Vehicles;
 
 public class Airplane : Vehicle
 {
-    public double Altitude { get; set; }
+    private double altitude;
+    public double Altitude
+    {
+        get { return altitude; }
+        set
+        {
+            if (value < 0) throw new InvalidAltitudeException("Altitude cannot be negative!");
+            altitude = value;
+        }
+    }
 
     public Airplane(string name, double price, double speed, double altitude)
         : base(name, price, speed, VehicleConstants.VehicleTypes.Airplane)
