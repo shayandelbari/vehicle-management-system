@@ -1,5 +1,7 @@
 ﻿using Exceptions;
-namespace finalProject;
+using Constants;
+
+namespace Vehicles;
 
 public abstract class Vehicle
 {
@@ -20,10 +22,10 @@ public abstract class Vehicle
         set { if (value < 0) throw new InvalidSpeedException("Speed cannot be negative!"); speed = value; }
     }
 
-    private string vehicleType = string.Empty;
-    public string VehicleType { get { return vehicleType; } set { vehicleType = value; } }
+    private VehicleConstants.VehicleTypes vehicleType;
+    public VehicleConstants.VehicleTypes VehicleType { get { return vehicleType; } set { vehicleType = value; } }
 
-    public Vehicle(string name, double price, double speed, string vehicleType)
+    protected Vehicle(string name, double price, double speed, VehicleConstants.VehicleTypes vehicleType)
     {
         Name = name;
         Price = price;
@@ -34,8 +36,8 @@ public abstract class Vehicle
     public virtual void DisplayInfo()
     {
         Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Price: {Price}");
-        Console.WriteLine($"Speed: {Speed}");
+        Console.WriteLine($"Price: {Price:C}");
+        Console.WriteLine($"Speed: {Speed} km/h");
         Console.WriteLine($"Vehicle Type: {VehicleType}");
     }
 

@@ -1,6 +1,26 @@
-﻿namespace finalProject;
+﻿using Constants;
 
-public class Car
+namespace Vehicles;
+public class Car : Vehicle
 {
 
+    public string model = string.Empty;
+    public string Model { get { return model; } set { model = value; } }
+
+    private int horsepower;
+    public int Horsepower { get { return horsepower; } set { horsepower = value; } }
+
+    public Car(string name, double price, double speed, string model, int horsepower)
+        : base(name, price, speed, VehicleConstants.VehicleTypes.Car)
+    {
+        Model = model;
+        Horsepower = horsepower;
+    }
+    public override void DisplayInfo()
+    {
+        base.DisplayInfo();
+        Console.WriteLine($"Model: {Model}");
+        Console.WriteLine($"Horsepower: {Horsepower} hp");
+    }
+    public override double CalculateTax() => Price * VehicleConstants.TaxRates.CarTaxRate;
 }
