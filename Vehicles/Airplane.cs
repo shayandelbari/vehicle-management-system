@@ -28,5 +28,10 @@ public class Airplane : Vehicle
         Console.WriteLine($"Altitude: {Altitude} meters");
     }
 
+    public override string ToString()
+    {
+        return $"{base.ToString()},{Altitude}";
+    }
+
     public override double CalculateTax() => Price * VehicleConstants.TaxRates.AirplaneTaxRate;
 }

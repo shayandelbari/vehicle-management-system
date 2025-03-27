@@ -41,5 +41,10 @@ public abstract class Vehicle
         Console.WriteLine($"Vehicle Type: {VehicleType}");
     }
 
+    public override string ToString()
+    {
+        return $"{VehicleType},{Name},{Price},{Speed}";
+    }
+
     public abstract double CalculateTax();
 }

@@ -28,5 +28,10 @@ public class Truck : Vehicle
         Console.WriteLine($"Load Capacity: {LoadCapacity} kg");
     }
 
+    public override string ToString()
+    {
+        return $"{base.ToString()},{LoadCapacity}";
+    }
+
     public override double CalculateTax() => Price * VehicleConstants.TaxRates.TruckTaxRate;
 }

@@ -24,8 +24,11 @@ public static class VehicleConstants
     public enum VehicleTypes
     {
         Car,
+        RaceCar,
         Airplane,
+        CargoAirplane,
         Boat,
+        LuxuryYacht,
         Truck,
         Train
     }

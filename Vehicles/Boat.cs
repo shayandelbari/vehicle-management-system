@@ -28,5 +28,10 @@ public class Boat : Vehicle
         Console.WriteLine($"Seating Capacity: {SeatingCapacity}");
     }
 
+    public override string ToString()
+    {
+        return $"{base.ToString()},{SeatingCapacity}";
+    }
+
     public override double CalculateTax() => Price * VehicleConstants.TaxRates.BoatTaxRate;
 }

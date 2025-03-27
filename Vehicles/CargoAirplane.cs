@@ -20,12 +20,18 @@ public class CargoAirplane : Airplane
         : base(name, price, speed, altitude)
     {
         CargoCapacity = cargoCapacity;
+        VehicleType = VehicleConstants.VehicleTypes.CargoAirplane;
     }
 
     public override void DisplayInfo()
     {
         base.DisplayInfo();
         Console.WriteLine($"Cargo Capacity: {CargoCapacity} kg");
+    }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()},{CargoCapacity}";
     }
 
     public override double CalculateTax() => Price * VehicleConstants.TaxRates.AirplaneTaxRate;
