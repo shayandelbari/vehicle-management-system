@@ -1,6 +1,11 @@
-﻿namespace vehicleManagementSystem;
+﻿using Vehicles;
 
-public class TaxCalculator
+namespace vehicleManagementSystem;
+
+public static class TaxCalculator
 {
-
+    public static double CalculateTax(Vehicle vehicle)
+    {
+        return vehicle.CalculateTax();
+    }
 }
