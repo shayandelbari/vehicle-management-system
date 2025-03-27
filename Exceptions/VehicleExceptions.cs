@@ -19,3 +19,5 @@ public class InvalidUnitsException(string? message) : VehicleException(message ?
 public class InvalidAltitudeException(string? message) : VehicleException(message ?? "Invalid altitude.") { }
 
 public class InvalidSeatingCapacityException(string? message) : VehicleException(message ?? "Invalid seating capacity.") { }
+
+public class InvalidHorsepowerException(string? message) : VehicleException(message ?? "Invalid horsepower.") { }
