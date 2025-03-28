@@ -1,4 +1,4 @@
-namespace Exceptions;
+namespace VehicleManagementSystem.Exceptions;
 
 public class VehicleException : Exception
 {

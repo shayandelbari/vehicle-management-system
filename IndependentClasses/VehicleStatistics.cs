@@ -1,7 +1,7 @@
-﻿using Vehicles;
-using Constants;
+﻿using VehicleManagementSystem.Vehicles;
+using VehicleManagementSystem.Constants;
 
-namespace vehicleManagementSystem;
+namespace VehicleManagementSystem.IndependentClasses;
 
 public static class VehicleStatistics
 {

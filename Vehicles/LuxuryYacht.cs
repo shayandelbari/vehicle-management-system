@@ -1,6 +1,6 @@
-﻿using Constants;
+﻿using VehicleManagementSystem.Constants;
 
-namespace Vehicles;
+namespace VehicleManagementSystem.Vehicles;
 
 public class LuxuryYacht : Boat
 {

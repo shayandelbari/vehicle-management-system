@@ -1,7 +1,7 @@
-﻿using Exceptions;
-using Constants;
+﻿using VehicleManagementSystem.Exceptions;
+using VehicleManagementSystem.Constants;
 
-namespace Vehicles;
+namespace VehicleManagementSystem.Vehicles;
 
 public abstract class Vehicle
 {

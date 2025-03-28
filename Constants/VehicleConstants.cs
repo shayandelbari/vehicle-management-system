@@ -1,4 +1,4 @@
-namespace Constants;
+namespace VehicleManagementSystem.Constants;
 
 public static class VehicleConstants
 {

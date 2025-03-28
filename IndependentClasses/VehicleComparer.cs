@@ -1,6 +1,6 @@
-﻿using Vehicles;
+﻿using VehicleManagementSystem.Vehicles;
 
-namespace vehicleManagementSystem;
+namespace VehicleManagementSystem.IndependentClasses;
 
 public class VehicleComparer
 {
