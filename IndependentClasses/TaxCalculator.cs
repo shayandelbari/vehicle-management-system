@@ -9,3 +9,4 @@ public static class TaxCalculator
         return vehicle.CalculateTax();
     }
 }
+

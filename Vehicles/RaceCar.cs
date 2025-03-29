@@ -1,5 +1,4 @@
 ﻿using VehicleManagementSystem.Constants;
-using VehicleManagementSystem.Exceptions;
 
 namespace VehicleManagementSystem.Vehicles;
 
@@ -7,7 +6,14 @@ public class RaceCar : Car
 {
     public bool TurboBoost { get; set; }
 
-    public RaceCar(string name, double price, double speed, string model, int horsepower, bool turboBoost)
+    public RaceCar(
+        string name,
+        double price,
+        double speed,
+        string model,
+        int horsepower,
+        bool turboBoost
+    )
         : base(name, price, speed, model, horsepower)
     {
         TurboBoost = turboBoost;

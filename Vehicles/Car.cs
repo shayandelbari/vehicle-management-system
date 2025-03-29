@@ -2,11 +2,15 @@
 using VehicleManagementSystem.Exceptions;
 
 namespace VehicleManagementSystem.Vehicles;
+
 public class Car : Vehicle
 {
-
     public string model = string.Empty;
-    public string Model { get { return model; } set { model = value; } }
+    public string Model
+    {
+        get { return model; }
+        set { model = value; }
+    }
 
     private int horsepower;
     public int Horsepower
@@ -14,7 +18,9 @@ public class Car : Vehicle
         get { return horsepower; }
         set
         {
-            if (value < 0) throw new InvalidHorsepowerException("Horsepower cannot be negative!"); horsepower = value;
+            if (value < 0)
+                throw new InvalidHorsepowerException("Horsepower cannot be negative!");
+            horsepower = value;
         }
     }
 
@@ -24,6 +30,7 @@ public class Car : Vehicle
         Model = model;
         Horsepower = horsepower;
     }
+
     public override void DisplayInfo()
     {
         base.DisplayInfo();

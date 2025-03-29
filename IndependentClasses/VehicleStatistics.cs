@@ -1,5 +1,5 @@
-﻿using VehicleManagementSystem.Vehicles;
-using VehicleManagementSystem.Constants;
+﻿using VehicleManagementSystem.Constants;
+using VehicleManagementSystem.Vehicles;
 
 namespace VehicleManagementSystem.IndependentClasses;
 

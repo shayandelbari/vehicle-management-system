@@ -11,7 +11,8 @@ public class Truck : Vehicle
         get { return loadCapacity; }
         set
         {
-            if (value < 0) throw new InvalidCargoCapacityException("Load capacity cannot be negative!");
+            if (value < 0)
+                throw new InvalidCargoCapacityException("Load capacity cannot be negative!");
             loadCapacity = value;
         }
     }

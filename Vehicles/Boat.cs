@@ -11,7 +11,8 @@ public class Boat : Vehicle
         get { return seatingCapacity; }
         set
         {
-            if (value < 0) throw new InvalidSeatingCapacityException("Seating capacity cannot be negative!");
+            if (value < 0)
+                throw new InvalidSeatingCapacityException("Seating capacity cannot be negative!");
             seatingCapacity = value;
         }
     }

@@ -15,37 +15,37 @@ This project is structured to manage various types of vehicles, implement tax ca
 ✅ **Data analysis using LINQ** (finding fastest vehicles, average prices, and type counts)  
 ✅ **Object array implementation** for managing multiple vehicle instances  
 ✅ **Command-line interface** for adding, sorting, and displaying vehicles  
-✅ Bonus: Extendable for **GUI implementation** (if desired)  
+✅ Bonus: Extendable for **GUI implementation** (if desired)
 
 ## Project Structure
 
 📂 **VehicleManagementSystem**  
-├── 📁 **Vehicles** *(All vehicle-related classes)*  
-│   ├── Vehicle.cs *(Abstract base class)*  
-│   ├── Train.cs, Airplane.cs, Car.cs, Boat.cs *(Derived vehicle types)*  
-│   ├── CargoAirplane.cs, RaceCar.cs, LuxuryYacht.cs *(Specialized vehicles)*  
+├── 📁 **Vehicles** _(All vehicle-related classes)_  
+│ ├── Vehicle.cs _(Abstract base class)_  
+│ ├── Train.cs, Airplane.cs, Car.cs, Boat.cs _(Derived vehicle types)_  
+│ ├── CargoAirplane.cs, RaceCar.cs, LuxuryYacht.cs _(Specialized vehicles)_  
 │
-├── 📁 **IndependentClasses** *(Utility classes)*  
-│   ├── VehicleComparer.cs *(Implements sorting algorithms)*  
-│   ├── TaxCalculator.cs *(Tax calculation logic based on vehicle type)*  
-│   ├── VehicleStatistics.cs *(Data analysis functions using LINQ)*  
+├── 📁 **IndependentClasses** _(Utility classes)_  
+│ ├── VehicleComparer.cs _(Implements sorting algorithms)_  
+│ ├── TaxCalculator.cs _(Tax calculation logic based on vehicle type)_  
+│ ├── VehicleStatistics.cs _(Data analysis functions using LINQ)_  
 │
-├── 📁 **Exceptions** *(Custom exception handling)*  
-│   ├── VehicleException.cs *(Base exception class)*  
-│   ├── InvalidPriceException.cs, InvalidSpeedException.cs, InvalidCargoCapacityException.cs  
+├── 📁 **Exceptions** _(Custom exception handling)_  
+│ ├── VehicleException.cs _(Base exception class)_  
+│ ├── InvalidPriceException.cs, InvalidSpeedException.cs, InvalidCargoCapacityException.cs  
 │
-├── 📁 **Services** *(File handling & vehicle management)*  
-│   ├── FileHandler.cs *(Handles saving/loading of vehicles from file)*  
-│   ├── VehicleManager.cs *(Manages vehicle array operations)*  
+├── 📁 **Services** _(File handling & vehicle management)_  
+│ ├── FileHandler.cs _(Handles saving/loading of vehicles from file)_  
+│ ├── VehicleManager.cs _(Manages vehicle array operations)_  
 │
-├── Program.cs *(Main execution logic & menu system)*  
+├── Program.cs _(Main execution logic & menu system)_
 
 ## Installation & Setup
 
 ### Prerequisites
 
-- .NET SDK (Latest version)  
-- Visual Studio / VS Code / Any C# IDE  
+- .NET SDK (Latest version)
+- Visual Studio / VS Code / Any C# IDE
 
 ### Steps to Set Up the Project
 
@@ -120,4 +120,5 @@ Contributions are welcome! Please follow these steps:
 This project is licensed under the **MIT License**.
 
 ---
+
 🚀 Happy Coding!

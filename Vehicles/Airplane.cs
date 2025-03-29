@@ -11,7 +11,8 @@ public class Airplane : Vehicle
         get { return altitude; }
         set
         {
-            if (value < 0) throw new InvalidAltitudeException("Altitude cannot be negative!");
+            if (value < 0)
+                throw new InvalidAltitudeException("Altitude cannot be negative!");
             altitude = value;
         }
     }

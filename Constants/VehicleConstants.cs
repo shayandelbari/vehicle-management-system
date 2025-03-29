@@ -30,6 +30,7 @@ public static class VehicleConstants
         Boat,
         LuxuryYacht,
         Truck,
-        Train
+        Train,
     }
 }
+

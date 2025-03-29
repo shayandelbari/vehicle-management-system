@@ -11,7 +11,8 @@ public class Train : Vehicle
         get { return units; }
         set
         {
-            if (value < 0) throw new InvalidUnitsException("Units cannot be negative!");
+            if (value < 0)
+                throw new InvalidUnitsException("Units cannot be negative!");
             units = value;
         }
     }
