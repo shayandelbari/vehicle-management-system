@@ -33,12 +33,9 @@ public static class VehicleConstants
         Truck,
         Train,
     }
-<<<<<<< HEAD
 
     public static class File
     {
-        public const string VehicleFilePath = "vehicles.csv";
+        public const string VehicleFilePath = "vehicles.txt";
     }
-=======
->>>>>>> b21cbf2 (fixed the issue with train tax rates)
 }

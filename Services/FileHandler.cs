@@ -8,7 +8,8 @@ public static class FileHandler
     public static void SaveVehicles(Vehicle[] vehicles)
     {
         using StreamWriter writer = new(VehicleConstants.File.VehicleFilePath);
-        foreach (Vehicle vehicle in vehicles) writer.WriteLine(vehicle.ToString());
+        foreach (Vehicle vehicle in vehicles)
+            writer.WriteLine(vehicle.ToString());
     }
 
     public static Vehicle[] LoadVehicles()
