@@ -34,5 +34,5 @@ public class Train : Vehicle
         return $"{base.ToString()},{Units}";
     }
 
-    public override double CalculateTax() => Price * VehicleConstants.TaxRates.TruckTaxRate;
+    public override double CalculateTax() => Price * VehicleConstants.TaxRates.TrainTaxRate;
 }

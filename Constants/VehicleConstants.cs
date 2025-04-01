@@ -8,6 +8,7 @@ public static class VehicleConstants
         public const double AirplaneTaxRate = 0.15;
         public const double BoatTaxRate = 0.05;
         public const double TruckTaxRate = 0.20;
+        public const double TrainTaxRate = 0.30;
     }
 
     public static class SpeedThresholds
@@ -32,9 +33,12 @@ public static class VehicleConstants
         Truck,
         Train,
     }
+<<<<<<< HEAD
 
     public static class File
     {
         public const string VehicleFilePath = "vehicles.csv";
     }
+=======
+>>>>>>> b21cbf2 (fixed the issue with train tax rates)
 }
