@@ -32,4 +32,9 @@ public static class VehicleConstants
         Truck,
         Train
     }
+
+    public static class File
+    {
+        public const string VehicleFilePath = "vehicles.csv";
+    }
 }

@@ -5,23 +5,21 @@ namespace VehicleManagementSystem.Services;
 
 public static class FileHandler
 {
-    private static readonly string filePath = "vehicles.csv";
-
     public static void SaveVehicles(Vehicle[] vehicles)
     {
-        using StreamWriter writer = new(filePath);
+        using StreamWriter writer = new(VehicleConstants.File.VehicleFilePath);
         foreach (Vehicle vehicle in vehicles) writer.WriteLine(vehicle.ToString());
     }
 
     public static Vehicle[] LoadVehicles()
     {
-        if (!File.Exists(filePath))
+        if (!File.Exists(VehicleConstants.File.VehicleFilePath))
         {
             return [];
         }
 
         List<Vehicle> vehicles = [];
-        using StreamReader reader = new(filePath);
+        using StreamReader reader = new(VehicleConstants.File.VehicleFilePath);
         while (!reader.EndOfStream)
         {
             string? dataLine = reader.ReadLine();
