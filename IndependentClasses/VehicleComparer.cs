@@ -16,7 +16,10 @@ public class VehicleComparer
 
     public static void SortByType(Vehicle[] vehicles)
     {
-        BubbleSort(vehicles, (v1, v2) => v1.VehicleType.ToString().CompareTo(v2.VehicleType.ToString()));
+        BubbleSort(
+            vehicles,
+            (v1, v2) => v1.VehicleType.ToString().CompareTo(v2.VehicleType.ToString())
+        );
     }
 
     private static void BubbleSort(Vehicle[] vehicles, Comparison<Vehicle> comparison)

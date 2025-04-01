@@ -6,7 +6,13 @@ public class LuxuryYacht : Boat
 {
     public bool HasHelipad { get; set; }
 
-    public LuxuryYacht(string name, double price, double speed, int seatingCapacity, bool hasHelipad)
+    public LuxuryYacht(
+        string name,
+        double price,
+        double speed,
+        int seatingCapacity,
+        bool hasHelipad
+    )
         : base(name, price, speed, seatingCapacity)
     {
         HasHelipad = hasHelipad;

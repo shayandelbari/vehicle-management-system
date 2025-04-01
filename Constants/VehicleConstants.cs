@@ -30,7 +30,7 @@ public static class VehicleConstants
         Boat,
         LuxuryYacht,
         Truck,
-        Train
+        Train,
     }
 
     public static class File
