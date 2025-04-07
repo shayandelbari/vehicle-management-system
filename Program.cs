@@ -86,7 +86,7 @@ class Program
         }
 
         Console.Write("Enter vehicle type: ");
-        if (!Enum.TryParse(Console.ReadLine(), out VehicleConstants.VehicleTypes vehicleType))
+        if (!Enum.TryParse(Console.ReadLine()?.ToLower(), out VehicleConstants.VehicleTypes vehicleType))
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Invalid vehicle type.");
@@ -235,7 +235,7 @@ class Program
         string model = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Enter horsepower: ");
-        int horsepower = int.Parse(Console.ReadLine() ?? "0");
+        int horsepower = Convert.ToInt32(Console.ReadLine());
 
         return new Car(name, price, speed, model, horsepower);
     }
@@ -244,7 +244,7 @@ class Program
     {
         var car = CreateCar(name, price, speed);
         Console.Write("Has Turbo Boost (true/false): ");
-        bool turboBoost = bool.Parse(Console.ReadLine() ?? "false");
+        bool turboBoost = Console.ReadLine()?.ToLower() == "true";
 
         return new RaceCar(car.Name, car.Price, car.Speed, car.Model, car.Horsepower, turboBoost);
     }
@@ -252,7 +252,7 @@ class Program
     static Truck CreateTruck(string name, double price, double speed)
     {
         Console.Write("Enter load capacity: ");
-        double loadCapacity = double.Parse(Console.ReadLine() ?? "0");
+        double loadCapacity = Convert.ToDouble(Console.ReadLine());
 
         return new Truck(name, price, speed, loadCapacity);
     }
@@ -260,7 +260,7 @@ class Program
     static Train CreateTrain(string name, double price, double speed)
     {
         Console.Write("Enter number of units: ");
-        int units = int.Parse(Console.ReadLine() ?? "0");
+        int units = Convert.ToInt32(Console.ReadLine());
 
         return new Train(name, price, speed, units);
     }
@@ -268,7 +268,7 @@ class Program
     static Boat CreateBoat(string name, double price, double speed)
     {
         Console.Write("Enter seating capacity: ");
-        int seatingCapacity = int.Parse(Console.ReadLine() ?? "0");
+        int seatingCapacity = Convert.ToInt32(Console.ReadLine());
 
         return new Boat(name, price, speed, seatingCapacity);
     }
@@ -277,7 +277,7 @@ class Program
     {
         var boat = CreateBoat(name, price, speed);
         Console.Write("Has Helipad (true/false): ");
-        bool hasHelipad = bool.Parse(Console.ReadLine() ?? "false");
+        bool hasHelipad = Console.ReadLine()?.ToLower() == "true";
 
         return new LuxuryYacht(boat.Name, boat.Price, boat.Speed, boat.SeatingCapacity, hasHelipad);
     }
@@ -285,7 +285,7 @@ class Program
     static Airplane CreateAirplane(string name, double price, double speed)
     {
         Console.Write("Enter altitude: ");
-        double altitude = double.Parse(Console.ReadLine() ?? "0");
+        double altitude = Convert.ToDouble(Console.ReadLine());
 
         return new Airplane(name, price, speed, altitude);
     }
@@ -294,7 +294,7 @@ class Program
     {
         var airplane = CreateAirplane(name, price, speed);
         Console.Write("Enter cargo capacity: ");
-        double cargoCapacity = double.Parse(Console.ReadLine() ?? "0");
+        double cargoCapacity = Convert.ToDouble(Console.ReadLine());
 
         return new CargoAirplane(airplane.Name, airplane.Price, airplane.Speed, airplane.Altitude, cargoCapacity);
     }
