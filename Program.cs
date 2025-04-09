@@ -2,6 +2,7 @@
 using VehicleManagementSystem.Vehicles;
 using VehicleManagementSystem.IndependentClasses;
 using VehicleManagementSystem.Constants;
+using VehicleManagementSystem.Exceptions;
 
 namespace VehicleManagementSystem;
 
@@ -57,6 +58,15 @@ class Program
                     break;
                 case "7":
                     exit = true;
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("===============================================");
+                    Console.WriteLine("Thanks for using the Vehicle Management System!");
+                    Console.WriteLine("===============================================");
+                    Console.ResetColor();
+                    Console.WriteLine($"The number of exceptions thrown: {VehicleException.VehicleErrors}");
+                    Thread.Sleep(2000);
+                    Console.Clear();
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -85,48 +95,84 @@ class Program
             Console.WriteLine($"- {type}");
         }
 
-        Console.Write("Enter vehicle type: ");
-        if (!Enum.TryParse(Console.ReadLine()?.ToLower(), out VehicleConstants.VehicleTypes vehicleType))
+        VehicleConstants.VehicleTypes vehicleType;
+        while (true)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Invalid vehicle type.");
-            Console.ResetColor();
-            return;
+            try
+            {
+                Console.Write("Enter vehicle type: ");
+                if (!Enum.TryParse(Console.ReadLine(), out vehicleType))
+                    throw new FormatException("Invalid vehicle type.");
+                break;
+            }
+            catch (FormatException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
+                Console.ResetColor();
+            }
         }
 
         Console.Write("Enter name: ");
         string name = Console.ReadLine() ?? string.Empty;
 
-        Console.Write("Enter price: ");
-        if (!double.TryParse(Console.ReadLine(), out double price) || price < 0)
+        double price;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Enter price: ");
+                price = Convert.ToDouble(Console.ReadLine());
+                break;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input. Please enter a valid number for price.");
+                Console.ResetColor();
+            }
+        }
+
+        double speed;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Enter speed: ");
+                speed = Convert.ToDouble(Console.ReadLine());
+                break;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input. Please enter a valid number for speed.");
+                Console.ResetColor();
+            }
+        }
+
+        Vehicle? vehicle = null;
+        try
+        {
+            vehicle = vehicleType switch
+            {
+                VehicleConstants.VehicleTypes.Car => CreateCar(name, price, speed),
+                VehicleConstants.VehicleTypes.RaceCar => CreateRaceCar(name, price, speed),
+                VehicleConstants.VehicleTypes.Truck => CreateTruck(name, price, speed),
+                VehicleConstants.VehicleTypes.Train => CreateTrain(name, price, speed),
+                VehicleConstants.VehicleTypes.Boat => CreateBoat(name, price, speed),
+                VehicleConstants.VehicleTypes.LuxuryYacht => CreateLuxuryYacht(name, price, speed),
+                VehicleConstants.VehicleTypes.Airplane => CreateAirplane(name, price, speed),
+                VehicleConstants.VehicleTypes.CargoAirplane => CreateCargoAirplane(name, price, speed),
+                _ => null
+            };
+        }
+        catch (VehicleException ex)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Invalid price.");
+            Console.WriteLine($"Error creating vehicle: {ex.Message}");
             Console.ResetColor();
             return;
         }
-
-        Console.Write("Enter speed: ");
-        if (!double.TryParse(Console.ReadLine(), out double speed) || speed < 0)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Invalid speed.");
-            Console.ResetColor();
-            return;
-        }
-
-        Vehicle? vehicle = vehicleType switch
-        {
-            VehicleConstants.VehicleTypes.Car => CreateCar(name, price, speed),
-            VehicleConstants.VehicleTypes.RaceCar => CreateRaceCar(name, price, speed),
-            VehicleConstants.VehicleTypes.Truck => CreateTruck(name, price, speed),
-            VehicleConstants.VehicleTypes.Train => CreateTrain(name, price, speed),
-            VehicleConstants.VehicleTypes.Boat => CreateBoat(name, price, speed),
-            VehicleConstants.VehicleTypes.LuxuryYacht => CreateLuxuryYacht(name, price, speed),
-            VehicleConstants.VehicleTypes.Airplane => CreateAirplane(name, price, speed),
-            VehicleConstants.VehicleTypes.CargoAirplane => CreateCargoAirplane(name, price, speed),
-            _ => null
-        };
 
         if (vehicle != null)
         {
@@ -234,8 +280,22 @@ class Program
         Console.Write("Enter model: ");
         string model = Console.ReadLine() ?? string.Empty;
 
-        Console.Write("Enter horsepower: ");
-        int horsepower = Convert.ToInt32(Console.ReadLine());
+        int horsepower;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Enter horsepower: ");
+                horsepower = Convert.ToInt32(Console.ReadLine());
+                break;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input. Please enter a valid integer for horsepower.");
+                Console.ResetColor();
+            }
+        }
 
         return new Car(name, price, speed, model, horsepower);
     }
@@ -251,16 +311,44 @@ class Program
 
     static Truck CreateTruck(string name, double price, double speed)
     {
-        Console.Write("Enter load capacity: ");
-        double loadCapacity = Convert.ToDouble(Console.ReadLine());
+        double loadCapacity;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Enter load capacity: ");
+                loadCapacity = Convert.ToDouble(Console.ReadLine());
+                break;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input. Please enter a valid number for load capacity.");
+                Console.ResetColor();
+            }
+        }
 
         return new Truck(name, price, speed, loadCapacity);
     }
 
     static Train CreateTrain(string name, double price, double speed)
     {
-        Console.Write("Enter number of units: ");
-        int units = Convert.ToInt32(Console.ReadLine());
+        int units;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Enter number of units: ");
+                units = Convert.ToInt32(Console.ReadLine());
+                break;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input. Please enter a valid integer for number of units.");
+                Console.ResetColor();
+            }
+        }
 
         return new Train(name, price, speed, units);
     }
@@ -284,8 +372,22 @@ class Program
 
     static Airplane CreateAirplane(string name, double price, double speed)
     {
-        Console.Write("Enter altitude: ");
-        double altitude = Convert.ToDouble(Console.ReadLine());
+        double altitude;
+        while (true)
+        {
+            try
+            {
+                Console.Write("Enter altitude: ");
+                altitude = Convert.ToDouble(Console.ReadLine());
+                break;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid input. Please enter a valid number for altitude.");
+                Console.ResetColor();
+            }
+        }
 
         return new Airplane(name, price, speed, altitude);
     }
