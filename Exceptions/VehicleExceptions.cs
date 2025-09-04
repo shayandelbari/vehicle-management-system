@@ -14,23 +14,30 @@ public class VehicleException : Exception
 }
 
 public class InvalidPriceException(string? message)
-    : VehicleException(message ?? "Invalid price.") { }
+    : VehicleException(message ?? "Invalid price.")
+{ }
 
 public class InvalidSpeedException(string? message)
-    : VehicleException(message ?? "Invalid speed.") { }
+    : VehicleException(message ?? "Invalid speed.")
+{ }
 
 public class InvalidCargoCapacityException(string? message)
-    : VehicleException(message ?? "Invalid cargo capacity.") { }
+    : VehicleException(message ?? "Invalid cargo capacity.")
+{ }
 
 public class InvalidUnitsException(string? message)
-    : VehicleException(message ?? "Invalid units.") { }
+    : VehicleException(message ?? "Invalid units.")
+{ }
 
 public class InvalidAltitudeException(string? message)
-    : VehicleException(message ?? "Invalid altitude.") { }
+    : VehicleException(message ?? "Invalid altitude.")
+{ }
 
 public class InvalidSeatingCapacityException(string? message)
-    : VehicleException(message ?? "Invalid seating capacity.") { }
+    : VehicleException(message ?? "Invalid seating capacity.")
+{ }
 
 public class InvalidHorsepowerException(string? message)
-    : VehicleException(message ?? "Invalid horsepower.") { }
+    : VehicleException(message ?? "Invalid horsepower.")
+{ }
 

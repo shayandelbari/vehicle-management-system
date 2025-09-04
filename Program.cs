@@ -1,8 +1,8 @@
-﻿using VehicleManagementSystem.Services;
-using VehicleManagementSystem.Vehicles;
-using VehicleManagementSystem.IndependentClasses;
-using VehicleManagementSystem.Constants;
+﻿using VehicleManagementSystem.Constants;
 using VehicleManagementSystem.Exceptions;
+using VehicleManagementSystem.IndependentClasses;
+using VehicleManagementSystem.Services;
+using VehicleManagementSystem.Vehicles;
 
 namespace VehicleManagementSystem;
 
@@ -64,7 +64,9 @@ class Program
                     Console.WriteLine("Thanks for using the Vehicle Management System!");
                     Console.WriteLine("===============================================");
                     Console.ResetColor();
-                    Console.WriteLine($"The number of exceptions thrown: {VehicleException.VehicleErrors}");
+                    Console.WriteLine(
+                        $"The number of exceptions thrown: {VehicleException.VehicleErrors}"
+                    );
                     Thread.Sleep(2000);
                     Console.Clear();
                     break;
@@ -162,8 +164,12 @@ class Program
                 VehicleConstants.VehicleTypes.Boat => CreateBoat(name, price, speed),
                 VehicleConstants.VehicleTypes.LuxuryYacht => CreateLuxuryYacht(name, price, speed),
                 VehicleConstants.VehicleTypes.Airplane => CreateAirplane(name, price, speed),
-                VehicleConstants.VehicleTypes.CargoAirplane => CreateCargoAirplane(name, price, speed),
-                _ => null
+                VehicleConstants.VehicleTypes.CargoAirplane => CreateCargoAirplane(
+                    name,
+                    price,
+                    speed
+                ),
+                _ => null,
             };
         }
         catch (VehicleException ex)
@@ -345,7 +351,9 @@ class Program
             catch
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid input. Please enter a valid integer for number of units.");
+                Console.WriteLine(
+                    "Invalid input. Please enter a valid integer for number of units."
+                );
                 Console.ResetColor();
             }
         }
@@ -398,6 +406,12 @@ class Program
         Console.Write("Enter cargo capacity: ");
         double cargoCapacity = Convert.ToDouble(Console.ReadLine());
 
-        return new CargoAirplane(airplane.Name, airplane.Price, airplane.Speed, airplane.Altitude, cargoCapacity);
+        return new CargoAirplane(
+            airplane.Name,
+            airplane.Price,
+            airplane.Speed,
+            airplane.Altitude,
+            cargoCapacity
+        );
     }
 }
